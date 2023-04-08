@@ -8,17 +8,13 @@ class DataSource{
             }
 
         })
-            .then(responseJson => {
-                if (responseJson) {
-                    console.log(Promise.resolve(responseJson));
-                } else {
-                    return Promise.reject(`${keyword} is not found`);
-                }
-            });
+            .then(response=>response.json())
+            .then(response => console.log(response))
+            .catch(err => console.error(err));
     }
 }
 
-const data = DataSource.getHotel();
-console.log(data);
+// const data = DataSource.getHotel();
+// console.log(data);
 
-// export default DataSource;
+module.exports = DataSource;
